@@ -1,0 +1,21 @@
+apiVersion: tempo.grafana.com/v1alpha1
+kind: TempoStack
+metadata:
+  name: sample
+spec:
+  resources:
+    total:
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+  storage:
+    secret:
+      name: minio-test
+      type: s3
+  storageSize: 1Gi
+  template:
+    queryFrontend:
+      jaegerQuery:
+        enabled: true
+        ingress:
+          type: ingress
